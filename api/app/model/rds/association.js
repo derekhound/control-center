@@ -27,7 +27,7 @@ module.exports = function(api) {
   Product.hasMany(Package, {
     as: 'package',
     foreignKey: {
-      fieldName: 'package_id',
+      fieldName: 'product_id',
       allowNull: false
     },
     onUpdate: 'RESTRICT',
@@ -38,10 +38,20 @@ module.exports = function(api) {
   // Environment
   //------------------------------
 
+  Environment.belongsTo(Product, {
+    as: 'product',
+    foreignKey: {
+      fieldName: 'product_id',
+      allowNull: false
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
+
   Environment.hasMany(Role, {
     as: 'role',
     foreignKey: {
-      fieldName: 'role_id',
+      fieldName: 'environment_id',
       allowNull: false
     },
     onUpdate: 'RESTRICT',
@@ -51,6 +61,16 @@ module.exports = function(api) {
   //------------------------------
   // Role
   //------------------------------
+
+  Role.belongsTo(Environment, {
+    as: 'environment',
+    foreignKey: {
+      fieldName: 'environment_id',
+      allowNull: false
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
 
 
   //------------------------------

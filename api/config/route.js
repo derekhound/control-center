@@ -25,7 +25,7 @@ exports.default = {
     {method: 'put',       path: '/api/1/products/:product_id',            action: 'updateProduct'},
     {method: 'delete',    path: '/api/1/products/:product_id',            action: 'deleteProduct'}
   ],
-/*
+
   EnvironmentRoute: [
     // REST APIs
     {method: 'get',       path: '/api/1/environments',                    action: 'queryEnvironments'},
@@ -34,7 +34,7 @@ exports.default = {
     {method: 'put',       path: '/api/1/environments/:environment_id',    action: 'updateEnvironment'},
     {method: 'delete',    path: '/api/1/environments/:environment_id',    action: 'deleteEnvironment'}
   ],
-
+/*
   RoleRoute: [
     // REST APIs
     {method: 'get',       path: '/api/1/roles',                           action: 'queryRoles'},

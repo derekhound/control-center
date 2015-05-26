@@ -1,48 +1,5 @@
 module.exports = function(api, ProductService) {
 
-  function login(req, res)
-  {
-    var email       = req.body.email;
-    var password    = req.body.password;
-    var token       = req.body.token;
-
-    // login
-    if (!token) {
-      ProductService.login(email, password)
-      // success
-      .then(function(user) {
-        var result = {
-          success: true,
-          item: user
-        };
-        res.send(result);
-      })
-      // fail
-      .catch(function(err) {
-        res.send({success: false, message: err.message});
-      });
-    // login auto
-    } else {
-      ProductService.loginAuto(token)
-      // success
-      .then(function(user) {
-        var result = {
-          success: true,
-          item: user
-        };
-        res.send(result);
-      })
-      // fail
-      .catch(function(err) {
-        res.send({success: false, message: err.message});
-      });
-    }
-  }
-
-  function logout(req, res)
-  {
-  }
-
   function queryProducts(req, res)
   {
     ProductService.queryProducts()
