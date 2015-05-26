@@ -1,0 +1,39 @@
+<div ng-controller="PolicyProductCtrl">
+
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <!-- topbar -->
+      <div class="clearfix">
+        <!-- filter -->
+        <div class="pull-left">
+        </div>
+        <!-- action -->
+        <div class="pull-right">
+          <button type="button" class="btn btn-default" ng-click="create()">Create</button>
+        </div>
+      </div>
+
+      <br/>
+
+      <!-- content -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items">
+            <td>{{item.name}}</td>
+            <td>{{item.desc}}</td>
+            <td><a ng-click="delete(item.product_id)"><i class="fa fa-times"></a></i></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>

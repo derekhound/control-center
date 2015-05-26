@@ -1,0 +1,71 @@
+<div class="navbar navbar-inverse navbar-static-top" ng-controller='HeaderCtrl'>
+  <div class="container">
+
+    <!-- login navbar -->
+    <div ng-show="isLogin()">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/">Intowow</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <!-- node -->
+          <li ng-class="{active: isActive('base.node')}"><a ui-sref="base.node.index">Node</a></li>
+
+          <!-- package -->
+          <li ng-class="{active: isActive('base.package')}"><a ui-sref="base.package.index">Package</a></li>
+
+          <!-- policy -->
+          <li ng-class="{active: isActive('base.policy')}" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">Policy <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a ui-sref="base.policy.product">Product</a></li>
+              <li><a ui-sref="base.policy.environment">Environment</a></li>
+              <li><a ui-sref="base.policy.role">Role</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <!-- setting -->
+          <li ng-class="{active: isActive('base.setting')}" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">Setting <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a ui-sref="base.setting.index">Setting</a></li>
+              <li><a ng-click="logout()">Log out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- non-login navbar -->
+    <div ng-show="!isLogin()">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse-2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/">Intowow</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse-2">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ui-sref="base.auth.signup">Signup</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+

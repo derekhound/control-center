@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Product</h3>
+</div>
+
+<div class="modal-body">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="name" class="col-md-2 control-label">Name</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="name" ng-model="model.name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="desc" class="col-md-2 control-label">Description</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="desc" ng-model="model.desc">
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()">OK</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
