@@ -6,7 +6,6 @@ angular.module('app')
     function ($scope, $state, $model, $modal) {
 
     $scope.model = {
-    
     };
 
     $scope.items = [];
@@ -16,11 +15,11 @@ angular.module('app')
       var params = {};
       $model.products.query(params, function(res) {
         if (res.success) {
-          $scope.items = res.items;          
+          $scope.items = res.items;
         } else {
           console.log(res);
         }
-      }); 
+      });
     }
 
     $scope.create = function() {
@@ -31,7 +30,7 @@ angular.module('app')
       });
       // after closing modal
       modalInstance.result.then(function(result) {
-        init();
+        query();
       });
     };
 
@@ -48,15 +47,13 @@ angular.module('app')
       });
       // after closing modal
       modalInstance.result.then(function(result) {
-        init();
+        query();
       });
     };
 
-    function init()
+    (function init()
     {
       query();
-    };
-
-    init();
+    })();
 
   }]);
