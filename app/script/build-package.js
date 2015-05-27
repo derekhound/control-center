@@ -15,8 +15,6 @@ function usage()
     'Options',
     '    -h',
     '        this help page',
-    '    -n name',
-    '        a package name',
     '    -p path',
     '        a package path',
     '    -c',
@@ -40,7 +38,7 @@ function getOpts()
     process.exit(0);
   }
 
-  if (opts.n === undefined && opts.p === undefined) {
+  if (opts.p === undefined) {
     usage();
     process.exit(1);
   }
@@ -126,12 +124,6 @@ function run(api, Sequelize)
   // get options
   var opts = getOpts();
 
-  // TODO:
-  // find package path from db
-  if (opts.n) {
-    opts.p = 'TODO';
-  }
-
   // dir
   var packageDir = opts.p;
   var buildDir = packageDir + '/build';
@@ -181,13 +173,14 @@ function run(api, Sequelize)
 
   // clean
   .then(function() {
-    if (!opts.c) {
-      return;
+    if (opts.c) {
+      var cmd = [
+        'rm -rf ' + tarballSrc,
+        'rm -rf ' + tarballDest
+      ].join(';');
+      var cwd = packageDir;
+      return execCommand(cmd, cwd);
     }
-
-    var cmd = sprintf('rm -rf %s; rm -rf %s;', tarballSrc, tarballDest);
-    var cwd = packageDir;
-    return execCommand(cmd, cwd);
   })
   // success
   .then(function() {
