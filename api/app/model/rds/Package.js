@@ -12,6 +12,9 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING
     },
+    path: {
+      type: DataTypes.TEXT
+    }
   }, {
     timestamps: false
   });
