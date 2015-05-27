@@ -1,4 +1,15 @@
-module.exports = function(func) {
+/**
+ *
+ * @param {object} opions
+ * @param {string} opions.appName
+ * @param {string|string[]} opions.configPath - an extra config dir or config file
+ *
+ */
+
+module.exports = function(options) {
+
+  // default values
+  options = options || {};
 
   // setup api
   var api = {};
@@ -7,18 +18,13 @@ module.exports = function(func) {
   api.env = process.env.NODE_ENV || 'development';
 
   // setup config
-  require('./config')(api);
+  require('./config')(api, options);
 
   // setup dependent injection
-  require('./dependable')(api);
+  require('./dependable')(api, options);
 
   // setup logger
-  require('./logger')(api);
-
-  // resolve func
-  if (func) {
-    api.container.resolve(func);
-  }
+  require('./logger')(api, options);
 
   return api;
 };

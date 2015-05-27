@@ -2,12 +2,12 @@ var fs = require('fs');
 var winston = require('winston');
 var moment = require('moment');
 
-module.exports = function(api) {
+module.exports = function(api, options) {
 
   var transports = [];
 
   // application name
-  var appName = api.config.general.appName;
+  var appName = options.appName || api.config.general.appName;
 
   // mkdir log
   var dir = api.config.general.paths.log;

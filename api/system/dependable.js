@@ -1,7 +1,7 @@
 var dependable = require('dependable');
 var fs = require('fs');
 
-module.exports = function(api) {
+module.exports = function(api, options) {
 
   // app dir
   var appDir = api.config.general.paths.app;
