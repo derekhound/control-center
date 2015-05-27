@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Environment</h3>
+</div>
+
+<div class="modal-body">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="product_id" class="col-md-2 control-label">Product</label>
+      <div class="col-md-10">
+        <select class="form-control" id="product_id" ng-options="item.product_id as item.name for item in products" ng-model="model.product_id">
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-md-2 control-label">Name</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="name" ng-model="model.name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="desc" class="col-md-2 control-label">Description</label>
+      <div class="col-md-10">
+        <input type="text" class="form-control" id="desc" ng-model="model.desc">
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()">OK</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
