@@ -1,0 +1,50 @@
+<div ng-controller="PolicyRoleCtrl">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <!-- topbar -->
+      <div class="clearfix">
+        <!-- filter -->
+        <div class="pull-left">
+          <form class="form-inline">
+            <select class="form-control" id="product_id" ng-options="item.product_id as item.name for item in products" ng-model="model.product_id" ng-change="changeProduct()">
+              <option value="">-- Product --</option>
+            </select>
+            <select class="form-control" id="environment_id" ng-options="item.environment_id as item.name for item in environments" ng-model="model.environment_id" ng-change="changeEnvironment()">
+              <option value="">-- Environment --</option>
+            </select>
+          </form>
+        </div>
+        <!-- action -->
+        <div class="pull-right">
+          <button type="button" class="btn btn-default" ng-click="create()">Create</button>
+        </div>
+      </div>
+
+      <br/>
+
+      <!-- content -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Environment Name</th>
+            <th>Role Name</th>
+            <th>Role Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items">
+            <td>{{item.product_name}}</td>
+            <td>{{item.environment_name}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.desc}}</td>
+            <td><a ng-click="delete(item.role_id)"><i class="fa fa-times"></a></i></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
