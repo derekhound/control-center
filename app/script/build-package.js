@@ -19,6 +19,8 @@ function usage()
     '        a package name',
     '    -p path',
     '        a package path',
+    '    -c',
+    '        clean temporary files after finishing tasks',
     '',
     'Examples',
     '    build-package -n dispatcher',
@@ -124,6 +126,7 @@ function run(api, Sequelize)
   // get options
   var opts = getOpts();
 
+  // TODO:
   // find package path from db
   if (opts.n) {
     opts.p = 'TODO';
@@ -142,6 +145,11 @@ function run(api, Sequelize)
     process.exit(1);
   }
 
+  // tarball
+  var tarballName = sprintf('%s-%s.tar.gz', config.name, config.version);
+  var tarballSrc  = buildDir + '/' + config.tarball;
+  var tarballDest = packageDir + '/' + tarballName;
+
   return Promise.resolve()
   // build clean
   .then(function() {
@@ -159,6 +167,26 @@ function run(api, Sequelize)
   .then(function() {
     var cmd = sprintf('%s install', config.scripts.build);
     var cwd = buildDir;
+    return execCommand(cmd, cwd);
+  })
+  // tarball package
+  .then(function() {
+    var cmd = sprintf('tar -czvf %s -C %s .', tarballDest, tarballSrc);
+    var cwd = packageDir;
+    return execCommand(cmd, cwd);
+  })
+  // upload s3
+
+  // update package info
+
+  // clean
+  .then(function() {
+    if (!opts.c) {
+      return;
+    }
+
+    var cmd = sprintf('rm -rf %s; rm -rf %s;', tarballSrc, tarballDest);
+    var cwd = packageDir;
     return execCommand(cmd, cwd);
   })
   // success
