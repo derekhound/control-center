@@ -3,8 +3,8 @@ var fs = require('fs');
 
 module.exports = function(api, options) {
 
-  // lib dir
-  var libDir = api.config.general.paths.lib;
+  // app dir
+  var appDir = api.config.general.paths.app;
 
   // add container to api
   api.container = dependable.container();
@@ -12,8 +12,8 @@ module.exports = function(api, options) {
   // register api
   api.container.register('api', api);
 
-  // register lib
-  api.container.load(libDir + '/resource');
+  // register app/lib
+  api.container.load(appDir + '/lib/resource');
 
 };
 

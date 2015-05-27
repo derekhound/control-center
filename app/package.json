@@ -19,7 +19,8 @@
     "moment": "~2.10.3",
     "bluebird": "~2.9.25",
     "aws-sdk": "~2.1.30",
-    "sprintf": "~0.1.5"
+    "sprintf": "~0.1.5",
+    "minimist": "~1.1.1"
   },
   "devDependencies": {
     "jshint": "~2.7.0",

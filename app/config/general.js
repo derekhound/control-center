@@ -1,9 +1,9 @@
 exports.default = {
-  appName: 'default',
+  appName: 'control-cernter-app',
   paths: {
     project:  __dirname + '/..',
     system:   __dirname + '/../system',
-    lib:      __dirname + '/../lib',
+    app:      __dirname + '/../app',
     log:      __dirname + '/../log'
   }
 };
