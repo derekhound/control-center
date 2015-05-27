@@ -12,7 +12,12 @@ module.exports = function(api, Sequelize) {
    */
   function queryProducts()
   {
-    return Product.findAll({}, {raw: true});
+    var options = {
+      order: [
+        ['name', 'ASC']
+      ]
+    };
+    return Product.findAll(options, {raw: true});
   }
 
   /**

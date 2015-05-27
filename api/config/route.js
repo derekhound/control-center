@@ -34,7 +34,7 @@ exports.default = {
     {method: 'put',       path: '/api/1/environments/:environment_id',    action: 'updateEnvironment'},
     {method: 'delete',    path: '/api/1/environments/:environment_id',    action: 'deleteEnvironment'}
   ],
-/*
+
   RoleRoute: [
     // REST APIs
     {method: 'get',       path: '/api/1/roles',                           action: 'queryRoles'},
@@ -43,5 +43,5 @@ exports.default = {
     {method: 'put',       path: '/api/1/roles/:role_id',                  action: 'updateRole'},
     {method: 'delete',    path: '/api/1/roles/:role_id',                  action: 'deleteRole'}
   ],
-*/
+
 };
