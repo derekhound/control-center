@@ -44,11 +44,20 @@ angular.module('app')
       update: {method: 'PUT', isArray: false}
     });
 
+    var packages = $resource(backend + '/api/1/packages/:package_id', {
+      token: getToken,
+      package_id: '@package_id'
+    }, {
+      query:  {method: 'GET', isArray: false},
+      update: {method: 'PUT', isArray: false}
+    });
+
     return {
       users:        users,
       products:     products,
       environments: environments,
       roles:        roles,
+      packages:     packages
     };
 
   }]);

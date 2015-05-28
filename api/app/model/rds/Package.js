@@ -14,6 +14,12 @@ module.exports = function(sequelize, DataTypes) {
     },
     path: {
       type: DataTypes.TEXT
+    },
+    latest: {
+      type: DataTypes.STRING
+    },
+    stable: {
+      type: DataTypes.STRING
     }
   }, {
     timestamps: false

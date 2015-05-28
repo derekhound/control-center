@@ -20,7 +20,13 @@
           <li ng-class="{active: isActive('base.node')}"><a ui-sref="base.node.index">Node</a></li>
 
           <!-- package -->
-          <li ng-class="{active: isActive('base.package')}"><a ui-sref="base.package.index">Package</a></li>
+          <li ng-class="{active: isActive('base.package')}" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">Package <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a ui-sref="base.package.build">Build</a></li>
+              <li><a ui-sref="base.package.deploy">Deploy</a></li>
+            </ul>
+          </li>
 
           <!-- policy -->
           <li ng-class="{active: isActive('base.policy')}" class="dropdown">

@@ -1,4 +1,3 @@
-var api = require('../system/index')(run);
 
 function run(api, Sequelize)
 {
@@ -15,4 +14,11 @@ function run(api, Sequelize)
     process.exit();
   });
 }
+//------------------------------
+// setup system
+//------------------------------
+var api = require('../system')({
+  appName: 'test'
+});
+api.container.resolve(run);
 

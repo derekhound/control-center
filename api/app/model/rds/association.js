@@ -77,5 +77,15 @@ module.exports = function(api) {
   // Package
   //------------------------------
 
+  Package.belongsTo(Product, {
+    as: 'product',
+    foreignKey: {
+      fieldName: 'product_id',
+      allowNull: false
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
+
 };
 

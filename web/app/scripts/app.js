@@ -83,9 +83,13 @@ angular
         url: '',
         templateUrl: 'views/package/base.html'
       })
-      .state('base.package.index', {
-        url: '/package/index',
-        templateUrl: 'views/package/index/index.html'
+      .state('base.package.build', {
+        url: '/package/build',
+        templateUrl: 'views/package/build/build.html'
+      })
+      .state('base.package.deploy', {
+        url: '/package/deploy',
+        templateUrl: 'views/package/deploy/deploy.html'
       })
 
       // policy

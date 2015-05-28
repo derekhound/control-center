@@ -44,4 +44,13 @@ exports.default = {
     {method: 'delete',    path: '/api/1/roles/:role_id',                  action: 'deleteRole'}
   ],
 
+  PackageRoute: [
+    // REST APIs
+    {method: 'get',       path: '/api/1/packages',                        action: 'queryPackages'},
+    {method: 'get',       path: '/api/1/packages/:package_id',            action: 'getPackage'},
+    {method: 'post',      path: '/api/1/packages',                        action: 'createPackage'},
+    {method: 'put',       path: '/api/1/packages/:package_id',            action: 'updatePackage'},
+    {method: 'delete',    path: '/api/1/packages/:package_id',            action: 'deletePackage'}
+  ]
+
 };
