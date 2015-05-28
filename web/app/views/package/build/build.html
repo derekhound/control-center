@@ -25,6 +25,7 @@
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
+            <th>Product Name</th>
             <th>Package Name</th>
             <th>Package Path</th>
             <th>Latest Vesion</th>
@@ -33,6 +34,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="item in items">
+            <td>{{item.product_name}}</td>
             <td>{{item.name}}</td>
             <td>{{item.path}}</td>
             <td>{{item.latest}}</td>

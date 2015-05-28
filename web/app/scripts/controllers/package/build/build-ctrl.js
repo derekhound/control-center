@@ -27,19 +27,15 @@ angular.module('app')
     }
 
     $scope.changeProduct = function() {
-      $scope.items = [];
       query();
     };
 
     function query()
     {
-      if ($scope.model.product_id === null) {
-        return;
+      var params = {};
+      if ($scope.model.product_id) {
+        params.product_id = $scope.model.product_id
       }
-
-      var params = {
-        product_id: $scope.model.product_id
-      };
       $model.packages.query(params, function(res) {
         if (res.success) {
           $scope.items = res.items;
@@ -99,6 +95,7 @@ angular.module('app')
     (function init()
     {
       queryProduct();
+      query();
     })();
 
   }]);

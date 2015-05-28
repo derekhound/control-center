@@ -15,15 +15,32 @@ module.exports = function(api, Sequelize) {
    */
   function queryPackages(product_id)
   {
-    var options = {
-      where: {
-        product_id: product_id
-      },
-      order: [
-        ['name', 'ASC']
-      ]
-    };
-    return Package.findAll(options, {raw: true});
+    var conditions = [];
+    var conditions_str = '';
+
+    if (product_id) {
+      conditions.push('e.product_id = ' + product_id);
+    }
+    if (conditions.length > 0) {
+      conditions_str = 'WHERE ' + conditions.join(' AND ');
+    }
+
+    var sql = [
+      'SELECT',
+        'pkg.*,',
+        'p.name AS product_name',
+      'FROM',
+        'package AS pkg',
+      'JOIN',
+        'product as p ON pkg.product_id = p.product_id',
+      conditions_str,
+      'ORDER BY',
+        'p.name ASC,',
+        'pkg.name ASC'
+    ].join(' ');
+
+    return Sequelize.query(sql, {type: Sequelize.QueryTypes.SELECT});
+
   }
 
   /**
