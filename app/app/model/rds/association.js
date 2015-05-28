@@ -1,10 +1,11 @@
 module.exports = function(api) {
 
-  var User        = api.model.rds.User;
-  var Product     = api.model.rds.Product;
-  var Environment = api.model.rds.Environment;
-  var Role        = api.model.rds.Role;
-  var Package     = api.model.rds.Package;
+  var User              = api.model.rds.User;
+  var Product           = api.model.rds.Product;
+  var Environment       = api.model.rds.Environment;
+  var Role              = api.model.rds.Role;
+  var Package           = api.model.rds.Package;
+  var PackageVersion    = api.model.rds.PackageVersion;
 
   //------------------------------
   // User
@@ -15,20 +16,18 @@ module.exports = function(api) {
   //------------------------------
 
   Product.hasMany(Environment, {
-    as: 'environment',
+    as: 'environments',
     foreignKey: {
       fieldName: 'product_id',
-      allowNull: false
     },
     onUpdate: 'RESTRICT',
     onDelete: 'CASCADE'
   });
 
   Product.hasMany(Package, {
-    as: 'package',
+    as: 'packages',
     foreignKey: {
       fieldName: 'product_id',
-      allowNull: false
     },
     onUpdate: 'RESTRICT',
     onDelete: 'CASCADE'
@@ -42,17 +41,15 @@ module.exports = function(api) {
     as: 'product',
     foreignKey: {
       fieldName: 'product_id',
-      allowNull: false
     },
     onUpdate: 'RESTRICT',
     onDelete: 'CASCADE'
   });
 
   Environment.hasMany(Role, {
-    as: 'role',
+    as: 'roles',
     foreignKey: {
       fieldName: 'environment_id',
-      allowNull: false
     },
     onUpdate: 'RESTRICT',
     onDelete: 'CASCADE'
@@ -66,7 +63,6 @@ module.exports = function(api) {
     as: 'environment',
     foreignKey: {
       fieldName: 'environment_id',
-      allowNull: false
     },
     onUpdate: 'RESTRICT',
     onDelete: 'CASCADE'
@@ -81,6 +77,28 @@ module.exports = function(api) {
     as: 'product',
     foreignKey: {
       fieldName: 'product_id',
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
+
+  Package.hasMany(PackageVersion, {
+    as: 'package_versions',
+    foreignKey: {
+      fieldName: 'package_id',
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
+
+  //------------------------------
+  // PackageVersion
+  //------------------------------
+
+  PackageVersion.belongsTo(Package, {
+    as: 'package',
+    foreignKey: {
+      fieldName: 'package_id',
       allowNull: false
     },
     onUpdate: 'RESTRICT',

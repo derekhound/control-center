@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-  return sequelize.define('environments', {
+  return sequelize.define('environment', {
     environment_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,

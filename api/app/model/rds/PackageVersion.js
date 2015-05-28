@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-  var Model = sequelize.define('package_versions', {
+  var Model = sequelize.define('package_version', {
     package_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
