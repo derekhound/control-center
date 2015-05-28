@@ -83,6 +83,19 @@ angular.module('app')
       });
     };
 
+    $scope.build = function(package_id) {
+      var params = {
+        package_id: package_id
+      };
+      $model.packages.build(params, function(res) {
+        if (res.success) {
+          query();
+        } else {
+          console.log(res);
+        }
+      });
+    };
+
     (function init()
     {
       queryProduct();

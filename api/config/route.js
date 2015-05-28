@@ -50,7 +50,10 @@ exports.default = {
     {method: 'get',       path: '/api/1/packages/:package_id',            action: 'getPackage'},
     {method: 'post',      path: '/api/1/packages',                        action: 'createPackage'},
     {method: 'put',       path: '/api/1/packages/:package_id',            action: 'updatePackage'},
-    {method: 'delete',    path: '/api/1/packages/:package_id',            action: 'deletePackage'}
+    {method: 'delete',    path: '/api/1/packages/:package_id',            action: 'deletePackage'},
+
+    // NON-REST APIs
+    {method: 'post',      path: '/api/1/packages/build',                  action: 'buildPackage'}
   ]
 
 };

@@ -48,8 +48,11 @@ angular.module('app')
       token: getToken,
       package_id: '@package_id'
     }, {
-      query:  {method: 'GET', isArray: false},
-      update: {method: 'PUT', isArray: false}
+      query:  {method: 'GET',  isArray: false},
+      update: {method: 'PUT',  isArray: false},
+
+      // NON-REST APIs
+      build:  {method: 'POST', isArray: false, url: backend + '/api/1/packages/build'}
     });
 
     return {

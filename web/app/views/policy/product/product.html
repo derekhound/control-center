@@ -30,7 +30,9 @@
           <tr ng-repeat="item in items">
             <td>{{item.name}}</td>
             <td>{{item.desc}}</td>
-            <td><a ng-click="delete(item.product_id)"><i class="fa fa-times"></a></i></td>
+            <td>
+              <button type="button" class="btn btn-default btn-xs" ng-click="delete(item.product_id)">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -66,12 +66,31 @@ module.exports = function(api, PackageService) {
     });
   }
 
+  function buildPackage(req, res)
+  {
+    var package_id = req.body.package_id;
+
+    PackageService.buildPackage(package_id)
+    // success
+    .then(function() {
+      var result = {
+        success: true
+      };
+      res.send(result);
+    })
+    // fail
+    .catch(function(err) {
+      res.send({success: false, message: err.message});
+    });
+  }
+
   return {
     queryPackages: queryPackages,
     createPackage: createPackage,
     getPackage:    getPackage,
     updatePackage: updatePackage,
-    deletePackage: deletePackage
+    deletePackage: deletePackage,
+    buildPackage:  buildPackage
   };
 };
 

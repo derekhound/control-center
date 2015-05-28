@@ -1,10 +1,11 @@
 module.exports = function(api) {
 
-  var User        = api.model.rds.User;
-  var Product     = api.model.rds.Product;
-  var Environment = api.model.rds.Environment;
-  var Role        = api.model.rds.Role;
-  var Package     = api.model.rds.Package;
+  var User              = api.model.rds.User;
+  var Product           = api.model.rds.Product;
+  var Environment       = api.model.rds.Environment;
+  var Role              = api.model.rds.Role;
+  var Package           = api.model.rds.Package;
+  var PackageVersion    = api.model.rds.Package;
 
   //------------------------------
   // User
@@ -87,5 +88,31 @@ module.exports = function(api) {
     onDelete: 'CASCADE'
   });
 
+  /*
+  Package.hasMany(PackageVersion, {
+    as: 'package_version',
+    foreignKey: {
+      fieldName: 'package_id',
+      allowNull: false
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
+  */
+  //------------------------------
+  // PackageVersion
+  //------------------------------
+
+  /*
+  PackageVersion.belongsTo(Package, {
+    as: 'package',
+    foreignKey: {
+      fieldName: 'package_id',
+      allowNull: false
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
+  */
 };
 

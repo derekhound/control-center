@@ -1,6 +1,8 @@
 var _             = require('lodash');
 var Promise       = require('bluebird');
 var fs            = require('fs');
+var exec          = require('child_process').exec;
+var sprintf       = require('sprintf');
 
 module.exports = function(api, Sequelize) {
 
@@ -83,13 +85,52 @@ module.exports = function(api, Sequelize) {
     });
   }
 
+  /**
+   * Build a package
+   *
+   * @param {number} package_id
+   * @promise {undefined}
+   */
+  function buildPackage(package_id)
+  {
+    // get package
+    return Package.findOne({
+      where: {
+        package_id: package_id
+      }
+    }, {raw: true})
+
+    // exec build-package
+    .then(function(row) {
+      if (row === null) {
+        throw new Error('This package is not registered');
+      }
+
+      // TODO
+      // Find a good way to locate script file
+
+      return new Promise(function(resolve, reject) {
+        var cmd = sprintf('./build-package.js -p %s', row.path);
+        var cwd = api.config.general.paths.project + '/../app/script';
+        var child = exec(cmd, {cwd: cwd}, function(err, stdout, stderr) {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve();
+        });
+      });
+    });
+  }
+
   // interface
   return {
     queryPackages: queryPackages,
     createPackage: createPackage,
     getPackage:    getPackage,
     updatePackage: updatePackage,
-    deletePackage: deletePackage
+    deletePackage: deletePackage,
+    buildPackage:  buildPackage
   };
 };
 

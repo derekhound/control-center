@@ -36,7 +36,10 @@
             <td>{{item.name}}</td>
             <td>{{item.path}}</td>
             <td>{{item.latest}}</td>
-            <td><a ng-click="delete(item.package_id)"><i class="fa fa-times"></a></i></td>
+            <td>
+              <button type="button" class="btn btn-primary btn-xs" ng-click="build(item.package_id)">Build</button>
+              <button type="button" class="btn btn-default btn-xs" ng-click="delete(item.package_id)">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
