@@ -55,12 +55,23 @@ angular.module('app')
       build:  {method: 'POST', isArray: false, url: backend + '/api/1/packages/build'}
     });
 
+    var deploys = $resource(backend + '/api/1/deploy/:deploy_id', {
+      token: getToken,
+    }, {
+      // NON-REST APIs
+      query:        {method: 'POST', isArray: false, url: backend + '/api/1/deploy/query'},
+      register:     {method: 'POST', isArray: false, url: backend + '/api/1/deploy/register'},
+      deregister:   {method: 'POST', isArray: false, url: backend + '/api/1/deploy/deregister'},
+      upgrade:      {method: 'POST', isArray: false, url: backend + '/api/1/deploy/upgrade'}
+    });
+
     return {
       users:        users,
       products:     products,
       environments: environments,
       roles:        roles,
-      packages:     packages
+      packages:     packages,
+      deploys:      deploys
     };
 
   }]);

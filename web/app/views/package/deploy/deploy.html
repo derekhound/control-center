@@ -1,7 +1,63 @@
-<div class="row" ng-controller="PackageDeployCtrl">
-  <div class="col-md-12">
+<div ng-controller="PackageDeployCtrl">
 
-    Deploy Page
+  <div class="row">
+    <div class="col-md-12">
 
+      <!-- topbar -->
+      <div class="clearfix">
+        <!-- filter -->
+        <div class="pull-left">
+          <form class="form-inline">
+
+            <select class="form-control" id="product_id" ng-options="item.product_id as item.name for item in products" ng-model="model.product_id" ng-change="changeProduct()">
+              <option value="">-- Product --</option>
+            </select>
+
+            <select class="form-control" id="environment_id" ng-options="item.environment_id as item.name for item in environments" ng-model="model.environment_id" ng-change="changeEnvironment()">
+              <option value="">-- Environment --</option>
+            </select>
+
+            <select class="form-control" id="role_id" ng-options="item.role_id as item.name for item in roles" ng-model="model.role_id" ng-change="changeRole()">
+              <option value="">-- Role --</option>
+            </select>
+
+          </form>
+        </div>
+        <!-- action -->
+        <div class="pull-right">
+          <button type="button" class="btn btn-default" ng-click="register()">Register</button>
+        </div>
+      </div>
+
+      <br/>
+
+      <!-- content -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Environment Name</th>
+            <th>Role Name</th>
+            <th>Package Name</th>
+            <th>Current Version</th>
+            <th>Latest Version</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items">
+            <td>{{item.product_name}}</td>
+            <td>{{item.environment_name}}</td>
+            <td>{{item.role_name}}</td>
+            <td>{{item.package_name}}</td>
+            <td>{{item.current}}</td>
+            <td>{{item.latest}}</td>
+            <td>
+              <button type="button" class="btn btn-default btn-xs" ng-click="deregister(item.role_id)">Deregister</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
-</div>

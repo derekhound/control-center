@@ -19,7 +19,7 @@ module.exports = function(api, Sequelize) {
     var conditions_str = '';
 
     if (product_id) {
-      conditions.push('e.product_id = ' + product_id);
+      conditions.push('p.product_id = ' + product_id);
     }
     if (conditions.length > 0) {
       conditions_str = 'WHERE ' + conditions.join(' AND ');
@@ -127,7 +127,7 @@ module.exports = function(api, Sequelize) {
       // Find a good way to locate script file
 
       return new Promise(function(resolve, reject) {
-        var cmd = sprintf('./build-package.js -p %s', row.path);
+        var cmd = sprintf('./build-package.js -p %s -c', row.path);
         var cwd = api.config.general.paths.project + '/../app/script';
         var child = exec(cmd, {cwd: cwd}, function(err, stdout, stderr) {
           if (err) {

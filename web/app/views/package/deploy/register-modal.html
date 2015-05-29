@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h3 class="modal-title">Register Package</h3>
+</div>
+
+<div class="modal-body">
+  <form class="form-horizontal">
+
+    <div class="form-group">
+      <label for="product_id" class="col-md-2 control-label">Product</label>
+      <div class="col-md-10">
+        <select class="form-control" id="product_id" ng-options="item.product_id as item.name for item in products" ng-model="model.product_id" ng-change="changeProduct()">
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="environment_id" class="col-md-2 control-label">Environment</label>
+      <div class="col-md-10">
+        <select class="form-control" id="environment_id" ng-options="item.environment_id as item.name for item in environments" ng-model="model.environment_id" ng-change="changeEnvironment()">
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="role_id" class="col-md-2 control-label">Role</label>
+      <div class="col-md-10">
+        <select class="form-control" id="role_id" ng-options="item.role_id as item.name for item in roles" ng-model="model.role_id" ng-change="changeRole()">
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="package_id" class="col-md-2 control-label">Package</label>
+      <div class="col-md-10">
+        <select class="form-control" id="package_id" ng-options="item.package_id as item.name for item in packages" ng-model="model.package_id">
+        </select>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()">OK</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

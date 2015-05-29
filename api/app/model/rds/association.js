@@ -6,6 +6,7 @@ module.exports = function(api) {
   var Role              = api.model.rds.Role;
   var Package           = api.model.rds.Package;
   var PackageVersion    = api.model.rds.PackageVersion;
+  var RolePackage       = api.model.rds.RolePackage;
 
   //------------------------------
   // User
@@ -68,6 +69,14 @@ module.exports = function(api) {
     onDelete: 'CASCADE'
   });
 
+  Role.hasMany(RolePackage, {
+    as: 'role_packages',
+    foreignKey: {
+      fieldName: 'role_id',
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
 
   //------------------------------
   // Package
@@ -99,7 +108,19 @@ module.exports = function(api) {
     as: 'package',
     foreignKey: {
       fieldName: 'package_id',
-      allowNull: false
+    },
+    onUpdate: 'RESTRICT',
+    onDelete: 'CASCADE'
+  });
+
+  //------------------------------
+  // RolePackage
+  //------------------------------
+
+  RolePackage.belongsTo(Role, {
+    as: 'role',
+    foreignKey: {
+      fieldName: 'role_id',
     },
     onUpdate: 'RESTRICT',
     onDelete: 'CASCADE'
