@@ -44,7 +44,7 @@ module.exports = function(api, DeployService) {
   function deregisterPackage(req, res)
   {
     var role_id     = req.body.role_id;
-    var package_id  = package_id;
+    var package_id  = req.body.package_id;
 
     DeployService.deregisterPackage(role_id, package_id)
     // success

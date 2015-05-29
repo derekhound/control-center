@@ -27,9 +27,7 @@ angular.module('app')
       var params = {};
       $model.products.query(params, function(res) {
         if (res.success) {
-          if (res.count > 0) {
-            $scope.products = res.items;
-          }
+          $scope.products = res.items;
         } else {
           console.log(res);
         }
@@ -66,9 +64,7 @@ angular.module('app')
       var params = _.pick($scope.model, ['product_id']);
       $model.environments.query(params, function(res) {
         if (res.success) {
-          if (res.count > 0) {
-            $scope.environments = res.items;
-          }
+          $scope.environments = res.items;
         } else {
           console.log(res);
         }
@@ -99,9 +95,7 @@ angular.module('app')
       var params = _.pick($scope.model, ['environment_id']);
       $model.roles.query(params, function(res) {
         if (res.success) {
-          if (res.count > 0) {
-            $scope.roles = res.items;
-          }
+          $scope.roles = res.items;
         } else {
           console.log(res);
         }
@@ -125,9 +119,7 @@ angular.module('app')
       var params = _.pick($scope.model, ['product_id', 'environment_id', 'role_id']);
       $model.deploys.query(params, function(res) {
         if (res.success) {
-          if (res.count > 0) {
-            $scope.items = res.items;
-          }
+          $scope.items = res.items;
         } else {
           console.log(res);
         }
@@ -151,15 +143,17 @@ angular.module('app')
       });
     };
 
-    /*
-    $scope.delete = function(role_id) {
+    $scope.deregister = function(role_id, package_id) {
       // modal instance
       var modalInstance = $modal.open({
-        templateUrl: 'views/policy/role/delete-modal.html',
-        controller: 'PolicyRoleDeleteModalCtrl',
+        templateUrl: 'views/package/deploy/deregister-modal.html',
+        controller: 'PackageDeployDeregisterModalCtrl',
         resolve: {
           role_id: function() {
             return role_id;
+          },
+          package_id: function() {
+            return package_id;
           }
         }
       });
@@ -168,9 +162,8 @@ angular.module('app')
         query();
       });
     };
-    */
 
-    (function init() 
+    (function init()
     {
       queryProduct();
       query();

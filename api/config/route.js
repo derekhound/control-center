@@ -60,6 +60,7 @@ exports.default = {
     // NON-REST APIs
     {method: 'post',      path: '/api/1/deploy/query',                    action: 'queryPackages'},
     {method: 'post',      path: '/api/1/deploy/register',                 action: 'registerPackage'},
+    {method: 'post',      path: '/api/1/deploy/deregister',               action: 'deregisterPackage'},
     {method: 'post',      path: '/api/1/deploy/upgrade',                  action: 'upgradePackage'}
   ]
 
